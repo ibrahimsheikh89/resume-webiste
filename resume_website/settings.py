@@ -25,9 +25,9 @@ PROJECT_DIR = os.path.join(BASE_DIR, "resume_website")
 SECRET_KEY = 'django-insecure-&*+olrgtclf)+jj#c0#hehix1p%)8g_qhv8l6=_5u+c)xx--$!'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['ibrahimsheikh.pythonanywhere.com']
 
 
 # Application definition
@@ -123,9 +123,12 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, "static")
-]
+if DEBUG:
+    STATICFILES_DIRS = [
+        os.path.join(BASE_DIR, 'static')
+    ]
+else:
+    STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 DEFAULT_FROM_EMAIL = "ibrahim.sheikhalshabab@gmail.com"
